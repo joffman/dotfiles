@@ -1,0 +1,29 @@
+# Taken from: https://gist.github.com/yangxuan8282/a18d757429c2e3a89699325045c742b3
+set ssl_starttls=yes
+set ssl_force_tls=yes
+
+set imap_user = 'janosch.hoffmann@hotmail.de'
+set imap_pass = "`pass mail/hotmail.de/janosch.hoffmann`"
+set from= $imap_user
+set use_from=yes
+set realname='Janosch Hoffmann'
+set folder = imaps://imap-mail.outlook.com:993
+set spoolfile = "+INBOX"
+set postponed="+[hotmail]/Drafts"
+set mail_check = 100
+set header_cache = "~/.mutt/cache/headers"
+set message_cachedir = "~/.mutt/cache/bodies"
+set certificate_file = "~/.mutt/certificates"
+set smtp_url = "smtp://$imap_user@smtp-mail.outlook.com:587"
+set smtp_pass = $imap_pass
+set move = no
+set imap_keepalive = 900
+set mailcap_path="~/.mutt/mailcap"
+
+# Use mu to look up addresses.
+set query_command="abook --mutt-query '%s'"
+macro index a     "|abook --add-email\n" 'add sender to abook'
+macro pager a     "|abook --add-email\n" 'add sender to abook'
+
+# Configure vim.
+set editor="vim -S ~/.mutt/vimrc"
